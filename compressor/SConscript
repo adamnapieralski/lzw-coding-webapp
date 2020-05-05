@@ -1,0 +1,53 @@
+# -*- mode: Python; -*- scons script
+
+import os, platform, shutil
+
+Import('env', 'python_version', 'test_val')
+
+def copyLibBuilder( target, source, env):
+    '''copies library'''
+    shutil.copy( str(source[0]), str(target[0]) )
+    return
+
+# paths
+env.Append( ENV = {'PATH' : os.environ['PATH'] })
+
+if(platform.system() == "Linux"):
+    
+    env.Append( CPPPATH = ['/usr/include/python{}'.format(str(python_version))] )
+    env.Append( LIBPATH = ['/usr/lib/python{}'.format(str(python_version))] )
+
+    env.Append( CPPFLAGS = '-Wall -std=c++11 -pedantic -pthread' )
+    env.Append( LINKFLAGS = '-Wall -pthread' )
+    if float(python_version) >= 3:
+        env.Append( LIBS = [ 'boost_python3' ] )
+    else:
+        env.Append( LIBS = [ 'boost_python' ] )
+elif(platform.system() == "Windows"):
+    env.Append( CPPPATH = [ Dir('C:/Boost/include/boost-1_52'), #path to boost include
+                            Dir('C:/Python{}/include'.format(str(python_version).replace('.', ''))) ] ) # path to python include
+    env.Append( LIBPATH = [ Dir('C:/Boost/lib'), #path to boost libs
+                            Dir('C:/Python{}/libs'.format(str(python_version).replace('.', ''))) ] ) # path to python libs
+
+    env.Append( CPPFLAGS = ' /EHsc /MD /D "WIN32" /D "_CONSOLE" /W4' )
+    env.Append( LINKFLAGS = ' /SUBSYSTEM:WINDOWS ' )
+else:
+    print platform.system() + " not supported"
+
+#build C++ library
+cpplib = env.SharedLibrary( target = 'compressor', source = ['src/'])
+if(platform.system() == "Linux"):
+    target = '../build_web/checkerspy/compressor.so'
+elif(platform.system() == "Windows"):
+    target = '../build_web/checkerspy/compressor.pyd'
+env.Command(target, cpplib, copyLibBuilder )
+
+#build tests
+SConscript('test/SConscript', variant_dir='build', duplicate=0, exports=['env'])
+
+# run tests
+if int(test_val):
+    print('scons: Running unit tests ...')
+    os.system('./build/test')
+    print('scons: done running tests.')
+    
