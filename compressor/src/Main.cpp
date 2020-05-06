@@ -2,11 +2,11 @@
 #include <fstream>
 #include <sstream>
 
-#include "../include/Compressor.hpp"
+#include "../include/lzw.hpp"
 
 int main() {
 
-    Compressor lzw = Compressor::getInstance();
+    auto lzw = LZW::getInstance();
 
     std::ifstream inFile;
     inFile.open("input.txt");
@@ -23,6 +23,7 @@ int main() {
     auto out = lzw.decode(vec);
     // std::cout << std::endl << out << std::endl;
     bool eq = (in == out);
-    std::cout << eq << std::endl;
+    std::cout << eq << std::endl << lzw.getCompressionRate();
+    
     return 0;
 }

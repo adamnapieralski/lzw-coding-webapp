@@ -1,27 +1,28 @@
 /**
- * @file Compressor.cpp
- * @brief Source file for Compressor class implementing LZW algorithm.
+ * @file lzw.cpp
+ * @brief Source file for class implementing LZW algorithm.
  * 
  * @author Adam Napieralski
  * @date 05.2020
  */
 
-#include "../include/Compressor.hpp"
+#include "../include/lzw.hpp"
 
 #include <climits>
 #include <cmath>
 
-Compressor& Compressor::getInstance() {
-    static Compressor instance;
+LZW& LZW::getInstance() {
+    static LZW instance;
     return instance;
 }
 
-Compressor::Compressor() {
+LZW::LZW() {
     bitSize_ = 12;
-    setMaxTableSize();    
+    setMaxTableSize();
+    compressionRate_ = 0.;
 }
 
-std::vector<uint16_t> Compressor::encode(std::string s) {
+std::vector<uint16_t> LZW::encode(std::string s) {
     resetEncodeTable();
     std::vector<uint16_t> out;
     std::string p = "", c = "";
@@ -48,10 +49,11 @@ std::vector<uint16_t> Compressor::encode(std::string s) {
         c = "";
     }
     out.push_back(encodeTable_[p]);
+    calculateCompressionRate(s, out);
     return out;
 }
 
-std::string Compressor::decode(std::vector<uint16_t> coded) {
+std::string LZW::decode(std::vector<uint16_t> coded) {
     resetDecodeTable();
     std::string out = "";
     if (coded.empty()) return out;
@@ -85,7 +87,12 @@ std::string Compressor::decode(std::vector<uint16_t> coded) {
     return out;
 }
 
-void Compressor::initializeEncodeTable() {
+double LZW::getCompressionRate() const {
+    return compressionRate_;
+}
+
+
+void LZW::initializeEncodeTable() {
     for (int i = 0; i < UCHAR_MAX; ++i) {
         std::string ch = "";
         ch += char(i);
@@ -93,7 +100,7 @@ void Compressor::initializeEncodeTable() {
     }
 }
 
-void Compressor::initializeDecodeTable() {
+void LZW::initializeDecodeTable() {
     for (int i = 0; i < UCHAR_MAX; ++i) {
         std::string ch = "";
         ch += char(i);
@@ -101,16 +108,20 @@ void Compressor::initializeDecodeTable() {
     }
 }
 
-void Compressor::resetEncodeTable() {
+void LZW::resetEncodeTable() {
     encodeTable_.clear();
     initializeEncodeTable();
 }
 
-void Compressor::resetDecodeTable() {
+void LZW::resetDecodeTable() {
     decodeTable_.clear();
     initializeDecodeTable();
 }
 
-void Compressor::setMaxTableSize() {
+void LZW::setMaxTableSize() {
     maxTableSize_ = static_cast<int>(std::pow(2., bitSize_) - 1);
+}
+
+void LZW::calculateCompressionRate(const std::string& text, const std::vector<uint16_t>& code) {
+    compressionRate_ = static_cast<double>(text.length() * CHAR_BIT) / (code.size() * bitSize_);
 }
