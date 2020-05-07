@@ -19,14 +19,20 @@
     <div ng-controller="codeController">
 		<div style="width: 100%; display: table;">
 			<div style="display: table-row;">
-				<div id="inCode" style="width: 50%; display: table-cell;">
+				<div id="inCode" style="width: 45%; display: table-cell;">
 					<!-- <label for="inCode">Text to encode</label> -->
 					<!-- <input type="text" id="incode" name="incodeText" placeholder="Tekst do zakodowania..."> -->
 					<textarea id="incode" placeholder="Tekst do zakodowania..."
 					style="height: 100px;"></textarea>
 					<!-- <textarea id="incode" rows="4" cols="50" name="incodeText" placeholder="Text to encode..."></textarea> -->
 				</div>
-				<div id="outCode" style="display: table-cell;">
+				<div style="display: table-cell; vertical-align: middle; text-align: center;">
+					<div class="compressionrate">CR: 1.6
+						<span class="tooltiptext">Stopień kompresji</span>
+					</div>
+					<!-- <span>4.5</span> -->
+				</div>
+				<div id="outCode" style="width: 45%; display: table-cell;">
 					<textarea id="outcode" placeholder="Zakodowany tekst..."
 					style="height: 100px;" data-role="none" ng-model="out.val"></textarea>
 					<!-- <label for="outCode">Output</label> -->
