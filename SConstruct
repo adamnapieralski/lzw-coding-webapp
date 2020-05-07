@@ -27,7 +27,7 @@ supported_python_versions = ['2.6', '2.7', '3.6', '3.7']
 
 if python_version not in supported_python_versions:
     raise AttributeError("Selected python version not supported. Build terminated.")
-SConscript(['checkers/SConscript', 'web/SConscript'], exports=['env', 'python_version', 'test_val'] )
+SConscript(['lzw/SConscript', 'web/SConscript'], exports=['env', 'python_version', 'test_val'] )
 
 if GetOption('runserver') is not None:
     os.system('python{} build_web/manage.py runserver {}:{}'.format(str(python_version)[0], WEB_CLIENT_HOST, WEB_CLIENT_PORT))

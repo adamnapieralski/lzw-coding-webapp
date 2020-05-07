@@ -25,5 +25,6 @@ int main() {
     bool eq = (in == out);
     std::cout << eq << std::endl << lzw.getCompressionRate();
     
+    lzw.decodeFromString("123,323");
     return 0;
 }

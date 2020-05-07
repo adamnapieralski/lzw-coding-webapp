@@ -35,15 +35,15 @@ else:
     print platform.system() + " not supported"
 
 #build C++ library
-cpplib = env.SharedLibrary( target = 'compressor', source = ['src/'])
+cpplib = env.SharedLibrary( target = 'lzw', source = ['src/lzwpy.cpp', 'src/lzw.cpp'])
 if(platform.system() == "Linux"):
-    target = '../build_web/checkerspy/compressor.so'
+    target = '../build_web/lzwpy/lzw.so'
 elif(platform.system() == "Windows"):
-    target = '../build_web/checkerspy/compressor.pyd'
+    target = '../build_web/lzwpy/lzw.pyd'
 env.Command(target, cpplib, copyLibBuilder )
 
 #build tests
-SConscript('test/SConscript', variant_dir='build', duplicate=0, exports=['env'])
+SConscript('tests/SConscript', variant_dir='build', duplicate=0, exports=['env'])
 
 # run tests
 if int(test_val):
