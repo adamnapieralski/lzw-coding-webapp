@@ -5,9 +5,9 @@ from lzwpy import lzw
 lzw_obj = lzw.LZW.getInstance()
     
 def encode(params):
-    # input_key = str(params['input_key'])
+    text = str(params['text'])
     """the calculation from C++ library"""
     return {
         # "val" : checkers.findTile(pawn_id)
-        'val' : None
+        'val' : lzw_obj.encodeToString(text)
     }

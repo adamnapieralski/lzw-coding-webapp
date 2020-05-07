@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-		<title>Warcaby</title>
+		<title>LZW</title>
 
 		<link rel="stylesheet" href="{% static "css/styles.css" %}" />
 		<script src="{% static "node_modules/angular/angular.min.js" %}"></script>
@@ -16,16 +16,25 @@
 
 	</head>
     <body>
-		<div id="inCode" ng-controller="codeController">
-			<label for="inCode">Text to encode</label>
-			<input type="text" id="incode" name="incodeText" placeholder="Text to encode...">
-		</div>
-		<input type="submit" value="Run LZW">
-		<div id="outCode" ng-controller="codeController">
-			<label for="outCode">Output</label>
-			<input type="text" id="outcode" name="outcodeText" placeholder="">
-		</div>
+    <div ng-controller="codeController">
+		<div style="width: 100%; display: table;">
+			<div style="display: table-row;">
+				<div id="inCode" style="width: 50%; display: table-cell;">
+					<!-- <label for="inCode">Text to encode</label> -->
+					<input type="text" id="incode" name="incodeText" placeholder="Text to encode...">
+					<!-- <textarea id="incode" rows="4" cols="50" name="incodeText" placeholder="Text to encode..."></textarea> -->
 
+				</div>
+				<div id="outCode" style="display: table-cell;">
+					<!-- <label for="outCode">Output</label> -->
+					<input type="text" ng-model="out.val" id="outcode" name="outcodeText" placeholder="Output...">
+				</div>
+			</div>
+		</div>
+		<div>
+			<input type="submit" ng-click="encode()" value="Run LZW">
+		</div>
+	</div>
 	<br>
     </body>
 </html>

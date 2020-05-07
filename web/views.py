@@ -20,7 +20,6 @@ def index(request):
 def ajax(request, module, function):
     """dispatch ajax requests"""
     try:
-		
         fun = getattr(getattr(globals()[str(module)], 'views'), str(function))
         data = json.dumps( fun(request.GET) )
         return django.http.HttpResponse(data, content_type='application/json')
