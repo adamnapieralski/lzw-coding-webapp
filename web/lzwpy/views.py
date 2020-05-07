@@ -11,3 +11,9 @@ def encode(params):
         # "val" : checkers.findTile(pawn_id)
         'val' : lzw_obj.encodeToString(text)
     }
+
+def decode(params):
+    text = str(params['text'])
+    return {
+        'val' : lzw_obj.decodeFromString(text)
+    }

@@ -35,7 +35,7 @@ input[type=submit]:hover {
 .switch {
 	position: relative;
 	display: inline-block;
-	width: 60px;
+	width: 150px;
 	height: 34px;
 	margin: 0 auto;
   }
@@ -53,7 +53,7 @@ input[type=submit]:hover {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgb(25, 190, 176);
+	background-color: #45a049;
 	-webkit-transition: .4s;
 	transition: .4s;
   }
@@ -79,9 +79,9 @@ input[type=submit]:hover {
   }
   
   input:checked + .slider:before {
-	-webkit-transform: translateX(26px);
-	-ms-transform: translateX(26px);
-	transform: translateX(26px);
+	-webkit-transform: translateX(116px);
+	-ms-transform: translateX(116px);
+	transform: translateX(116px);
   }
   
   /* Rounded sliders */
@@ -92,3 +92,35 @@ input[type=submit]:hover {
   .slider.round:before {
 	border-radius: 50%;
   }
+
+  .on
+{
+  display: none;
+}
+
+.on, .off
+{
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  font-size: 10px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked + .slider .off
+{display: none;}
+
+/*--------- END --------*/
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;}

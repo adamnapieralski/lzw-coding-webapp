@@ -6,42 +6,43 @@ myAppControllers.controller('codeController',
 	['$scope', 'srvInfo',
 		function ($scope, srvInfo) {
 
+		$scope.isCoding = Boolean(true);
+
 		$scope.encode = function(data) {
-			console.log("encode");
-			srvInfo.encode(
-				function(data) {
-					$scope.out = data.data;
-					console.log(data);
-				});
+			if ($scope.isCoding) {
+				console.log("encode");
+				srvInfo.encode(
+					function(data) {
+						$scope.out = data.data;
+						console.log(data);
+					});
+			}
+			else {
+				console.log("decode");
+				srvInfo.decode(
+					function(data) {
+						$scope.out = data.data;
+						console.log(data);
+					});
+			}
+
 		};
 
-		// $scope.viewTile = function(data) {
-		// 	this.printUserName();
-		// 	srvInfo.findTile(
-		// 		function(data) {
-		// 			// zwrocone z findTile z checkerspy/views.py
-		// 			$scope.pawn_tile = data.data;
-		// 			console.log(data);
-		// 		});
-		// };
+		$scope.changeCodingType = function(data) {
+			$scope.isCoding = !$scope.isCoding;
+			document.getElementById('incode').value = "";
+			document.getElementById('outcode').value = "";
 
-		// $scope.loadGame = function(data) {
-		// 	if (document.getElementById('userNameText').value == "") {
-		// 		document.getElementById('userNameText').placeholder = "Podaj nazwę gracza!";
-		// 		document.getElementById('userNameText').style.borderColor = 'red';
-		// 	}
-		// 	else {
-		// 		srvInfo.initializeGame(function(data) {});
-		// 		window.location = "/play";
-		// 	}
-		// };
+			if ($scope.isCoding) {
+				document.getElementById('incode').placeholder = "Tekst do zakodowania...";
+				document.getElementById('outcode').placeholder = "Zakodowany tekst...";
+			}
+			else {
+				document.getElementById('incode').placeholder = "Kod do odkodowania...";
+				document.getElementById('outcode').placeholder = "Oryginalny tekst...";
+			}
 
-		// $scope.printUserName = function(data) {
-		// 	srvInfo.getUserName(
-		// 		function(data) {
-		// 			document.getElementById('userNameView').textContent = data.data.user_name;
-		// 			document.getElementById('userColorView').textContent = data.data.user_color;
-		//https://www.google.com/search?q=angularjs+returning+html+file&oq=angularjs+returning+html+file&aqs=chrome..69i57j33.7679j0j4&sourceid=chrome&ie=U$httpF-8// }
+		};
 }]);
 	
 
@@ -51,6 +52,9 @@ angular.module('myAppServices', [])
              function($http) {
 				 this.encode = function(callback) {
 					return $http.get('/ajax/lzwpy/encode/?text='+document.getElementById('incode').value).then(callback);
+				 };
+				 this.decode = function(callback) {
+					return $http.get('/ajax/lzwpy/decode/?text='+document.getElementById('incode').value).then(callback); 
 				 };
                 //  this.findTile = function(callback) {
 				// 	 // wywoluje findTile z checkerspy/views.py

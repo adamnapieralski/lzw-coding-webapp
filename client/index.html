@@ -21,24 +21,26 @@
 			<div style="display: table-row;">
 				<div id="inCode" style="width: 50%; display: table-cell;">
 					<!-- <label for="inCode">Text to encode</label> -->
-					<input type="text" id="incode" name="incodeText" placeholder="Text to encode...">
+					<input type="text" id="incode" name="incodeText" placeholder="Tekst do zakodowania...">
 					<!-- <textarea id="incode" rows="4" cols="50" name="incodeText" placeholder="Text to encode..."></textarea> -->
 
 				</div>
 				<div id="outCode" style="display: table-cell;">
 					<!-- <label for="outCode">Output</label> -->
-					<input type="text" ng-model="out.val" id="outcode" name="outcodeText" placeholder="Output...">
+					<input type="text" ng-model="out.val" id="outcode" name="outcodeText" placeholder="Zakodowany tekst...">
 				</div>
 			</div>
 		</div>
 		<div style="text-align: center;">
 			<label class="switch">
-				<input type="checkbox" unchecked>
-				<span class="slider round"></span>
+				<input id="codingCheckBox" type="checkbox" ng-click="changeCodingType()">
+				<div class="slider round">
+				<span class="on">DEKODOWANIE</span><span class="off">KODODOWANIE</span>
+				</div>
 			</label>
 		</div>
 		<div>
-			<input type="submit" ng-click="encode()" value="Run LZW">
+			<input type="submit" ng-click="encode()" value="Wykonaj">
 		</div>
 	</div>
 	<br>
