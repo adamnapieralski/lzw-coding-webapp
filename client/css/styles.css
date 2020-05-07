@@ -1,23 +1,38 @@
+body {
+	background-color: #393e46;
+}
+
 input[type=text], select {
 	width: 100%;
 	padding: 12px;
 	margin: 0px;
 	display: inline-block;
-	border: 1px solid #ccc;
+	border: 1px solid #393e46;
 	border-radius: 4px;
 	box-sizing: border-box;
 }
 
+textarea, select {
+	width: 100%;
+	padding: 12px;
+	margin: 0px;
+	display: inline-block;
+	border: 1px solid #393e46;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: none;
+}
+
 div {
 	border-radius: 5px;
-	background-color: #f3f3f3;
+	background-color: #eeeeee;
 	padding: 15px;
 	box-sizing: border-box;
 }
 
 input[type=submit] {
 	width: 25%;
-	background-color: #4CAF50;
+	background-color: #00adb5;
 	color: white;
 	padding: 14px 20px;
 	margin: 0 auto;
@@ -29,7 +44,7 @@ input[type=submit] {
 }
   
 input[type=submit]:hover {
-	background-color: #45a049;
+	background-color: #009097;
 }
 
 .switch {
@@ -53,7 +68,7 @@ input[type=submit]:hover {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #45a049;
+	background-color: #00adb5;
 	-webkit-transition: .4s;
 	transition: .4s;
   }
@@ -71,11 +86,11 @@ input[type=submit]:hover {
   }
   
   input:checked + .slider {
-	background-color: rgb(25, 143, 190);
+	background-color: #00adb5;
   }
   
   input:focus + .slider {
-	box-shadow: 0 0 1px rgb(25, 143, 190);
+	box-shadow: 0 0 1px #00adb5;
   }
   
   input:checked + .slider:before {
