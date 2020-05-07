@@ -1,69 +1,30 @@
-.hidden {
-    display: none;
+input[type=text], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
 }
 
-.error {
-    font-size: 12px;
-    color:red;
-	display:none;
+div {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
 }
 
-.info {
-    font-size: 2em;
-    color:green;
+input[type=submit] {
+	width: 100%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
 }
-
-body {
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Noto Sans', sans-serif;
-	font-size: 100.01%;
+  
+input[type=submit]:hover {
+	background-color: #45a049;
 }
-input{
-	background-color:white;
-	border:1px solid gray;
-	color:blue;
-}
-li{
-	margin:1px;
-}
-.header{
-	background-color:lightseagreen;
-	color:white;
-}
-.usage{
-	background-color:#24470a;
-	color:white;
-}
-.coded{
-	background-color:#c3cdbc;
-	color:black;
-}
-.coded_value{
-	color:red;
-}
-div.coded_error{
-	background-color:#ffa1a1;
-}
-
-.column {
-	float: left;
-	text-align: center;
-	vertical-align: middle;
-}
-
-.left, .right {
-	width: 25%;
-}
-
-.middle {
-	width: 50%;
-	margin: 0 auto;
-}
-
-/* Clear floats after the columns */
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-  }
