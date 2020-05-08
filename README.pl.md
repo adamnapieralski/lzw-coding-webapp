@@ -1,4 +1,4 @@
-# lzw-text-compression-webapp
+# lzw-coding-webapp
 Projekt dodatkowy realizowany na przedmiot Zaawansowane Programowanie w C++ (ZPR). Minimalistyczna aplikacja webowa realizująca kodowanie i odkodowywanie (kompresję) z wykorzystaniem algorytmu [LZW Lempel-Ziv-Welch](https://pl.wikipedia.org/wiki/LZW).<br>
 
 Aplikacja webowa w architekturze opartej na:

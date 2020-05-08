@@ -1,4 +1,4 @@
-# lzw-text-compression-webapp
+# lzw-coding-webapp
 Additional project for Advanced Programming course on EITI (WUT). Simple web application for coding and decoding text using [LZW (Lempel-Ziv-Welch)](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch) algorithm.<br>
 Architecture is based on:
 - C++, boost.python - calculations,
