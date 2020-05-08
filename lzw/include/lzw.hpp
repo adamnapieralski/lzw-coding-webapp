@@ -22,6 +22,7 @@ public:
     std::string decode(const std::vector<uint16_t>& code);
     std::string decodeFromString(const std::string& code);
 
+    void setBitSize(int bitSize);
     double getCompressionRate() const;
 
 private:

@@ -2,7 +2,7 @@ body {
 	background-color: #393e46;
 }
 
-input[type=text], select {
+input[type=text] {
 	width: 100%;
 	padding: 12px;
 	margin: 0px;
@@ -12,11 +12,22 @@ input[type=text], select {
 	box-sizing: border-box;
 }
 
-textarea, select {
+textarea {
 	width: 100%;
 	padding: 12px;
 	margin: 0px;
 	display: inline-block;
+	border: 1px solid #393e46;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: none;
+}
+
+select {
+	padding: 4px;
+	margin: 0px;
+	display: inline-block;
+	background-color: white;
 	border: 1px solid #393e46;
 	border-radius: 4px;
 	box-sizing: border-box;
@@ -28,6 +39,14 @@ div {
 	background-color: #eeeeee;
 	padding: 15px;
 	box-sizing: border-box;
+	position: relative;
+}
+
+.vertical-center {
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 input[type=submit] {
@@ -52,6 +71,16 @@ input[type=submit]:hover {
 	color: #009097;
 	font-family: sans-serif;
 	font-size: 1.4em;
+	font-weight: bold;
+	position: relative;
+	display: inline-block;
+	border-radius: 5px;
+}
+
+.bitsizetext {
+	color: #009097;
+	font-family: sans-serif;
+	font-size: 1em;
 	font-weight: bold;
 	position: relative;
 	display: inline-block;

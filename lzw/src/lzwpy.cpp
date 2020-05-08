@@ -20,5 +20,6 @@ BOOST_PYTHON_MODULE(lzw)
         .def("encodeToString", &LZW::encodeToString)
         .def("decodeFromString", &LZW::decodeFromString)
         .def("getCompressionRate", &LZW::getCompressionRate)
+        .def("setBitSize", &LZW::setBitSize)
     ;
 }

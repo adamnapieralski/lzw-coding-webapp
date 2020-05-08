@@ -8,6 +8,7 @@
 
 #include "../include/lzw.hpp"
 
+#include <iostream>
 #include <climits>
 #include <cmath>
 #include <sstream>
@@ -100,6 +101,13 @@ std::string LZW::decodeFromString(const std::string& code) {
     auto codeVec = stringToVector(code);
     return decode(codeVec);
 }
+
+void LZW::setBitSize(int bitSize) {
+    bitSize_ = bitSize;
+    setMaxTableSize();
+    std::cout << bitSize_;
+}
+
 
 double LZW::getCompressionRate() const {
     return compressionRate_;

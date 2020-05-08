@@ -17,3 +17,12 @@ def decode(params):
     return {
         'val' : lzw_obj.decodeFromString(text)
     }
+
+def changeBitSize(params):
+    bitSize = int(params['bitSize'])
+    lzw_obj.setBitSize(bitSize)
+
+def getCompressionRate(params):
+    return {
+        'CR' : lzw_obj.getCompressionRate()
+    }
