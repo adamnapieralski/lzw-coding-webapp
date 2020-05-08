@@ -20,23 +20,17 @@
 		<div style="width: 100%; display: table;">
 			<div style="display: table-row;">
 				<div id="inCode" style="width: 44%; display: table-cell;">
-					<!-- <label for="inCode">Text to encode</label> -->
-					<!-- <input type="text" id="incode" name="incodeText" placeholder="Tekst do zakodowania..."> -->
-					<textarea id="incode" placeholder="Tekst do zakodowania..."
+					<textarea id="incode" placeholder="Text to encode..."
 					style="height: 100px;"></textarea>
-					<!-- <textarea id="incode" rows="4" cols="50" name="incodeText" placeholder="Text to encode..."></textarea> -->
 				</div>
 				<div style="display: table-cell; vertical-align: middle; text-align: center;">
 					<div class="compressionrate">CR: <span ng-bind="compressionRate"></span>
 						<span class="tooltiptext">Compression Rate</span>
 					</div>
-					<!-- <span>4.5</span> -->
 				</div>
 				<div id="outCode" style="width: 44%; display: table-cell;">
-					<textarea id="outcode" placeholder="Zakodowany tekst..."
+					<textarea id="outcode" placeholder="Code..."
 					style="height: 100px;" data-role="none" ng-model="out.val"></textarea>
-					<!-- <label for="outCode">Output</label> -->
-					<!-- <input type="text" ng-model="out.val" id="outcode" name="outcodeText" placeholder="Zakodowany tekst..."> -->
 				</div>
 			</div>
 		</div>
@@ -55,7 +49,7 @@
 			</label>
 		</div>
 		<div>
-			<input type="submit" ng-click="encode()" value="RUN">
+			<input type="submit" ng-click="run()" value="RUN">
 		</div>
 	</div>
 	<br>

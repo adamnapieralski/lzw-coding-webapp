@@ -12,27 +12,22 @@ myAppControllers.controller('codeController',
 							{code: 15, name: '15'}, {code: 16, name: '16'} ];
 		$scope.compressionRate = 0.0;
 
-		$scope.encode = function(data) {
+		$scope.run = function(data) {
 			if ($scope.isCoding) {
-				console.log("encode");
 				srvInfo.encode(
 					function(data) {
 						$scope.out = data.data;
-						console.log(data);
 					});
 			}
 			else {
-				console.log("decode");
 				srvInfo.decode(
 					function(data) {
 						$scope.out = data.data;
-						console.log(data);
 					});
 			}
 			srvInfo.getCompressionRate(
 				function(data) {
 					$scope.compressionRate = data.data.CR.toFixed(2);
-					console.log($scope.compressionRate);
 				}
 			)
 		};
@@ -75,25 +70,6 @@ angular.module('myAppServices', [])
 				 this.getCompressionRate = function(callback) {
 					return $http.get('/ajax/lzwpy/getCompressionRate/').then(callback); 
 				 }
-                //  this.findTile = function(callback) {
-				// 	 // wywoluje findTile z checkerspy/views.py
-                //      return $http.get('/ajax/checkerspy/findTile/?pawn_id='+document.getElementById('pawn_id').value).then(callback);
-				//  };
-				//  this.initializeGame = function(callback) {
-				// 	var colors = document.getElementsByName('userColors'); 
-				// 	var user_color = "";
-				// 	for(i = 0; i < colors.length; i++) { 
-				// 		if(colors[i].checked) 
-				// 			user_color = colors[i].value;
-				// 	} 
-				// 	return $http.get('/ajax/checkerspy/initialize/?user_name='
-				// 	+ document.getElementById('userNameText').value + '&user_color='
-				// 	+ user_color).then(callback); 
-				//  };
-				//  this.getUserName = function(callback) {
-				// 	return $http.get('/ajax/checkerspy/get_user_data/').then(callback); 
-				//  };
-
              });
 
 

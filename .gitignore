@@ -1,5 +1,6 @@
 .vscode/
 build_web/
+client/node_modules/
 
 # Prerequisites
 *.d
