@@ -8,7 +8,6 @@
 
 #include "../include/lzw.hpp"
 
-#include <iostream>
 #include <climits>
 #include <cmath>
 #include <sstream>
@@ -29,7 +28,10 @@ std::vector<uint16_t> LZW::encode(const std::string& str) {
     resetEncodeTable();
     std::vector<uint16_t> out;
     std::string p = "", c = "";
-    if (str.empty()) return out;
+    if (str.empty()) {
+        compressionRate_ = 0.;
+        return out;
+    }
     p += str.at(0);
     int count = UCHAR_MAX + 1;
     for (size_t i = 0; i < str.length(); ++i) {
@@ -65,7 +67,10 @@ std::string LZW::encodeToString(const std::string& str) {
 std::string LZW::decode(const std::vector<uint16_t>& code) {
     resetDecodeTable();
     std::string out = "";
-    if (code.empty()) return out;
+    if (code.empty()) {
+        compressionRate_ = 0.;
+        return out;
+    }
     int old = code.at(0);
     int codeNum;
     std::string s = decodeTable_[old];
@@ -105,7 +110,6 @@ std::string LZW::decodeFromString(const std::string& code) {
 void LZW::setBitSize(int bitSize) {
     bitSize_ = bitSize;
     setMaxTableSize();
-    std::cout << bitSize_;
 }
 
 

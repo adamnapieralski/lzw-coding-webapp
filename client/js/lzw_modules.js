@@ -16,13 +16,13 @@ myAppControllers.controller('codeController',
 			if ($scope.isCoding) {
 				srvInfo.encode(
 					function(data) {
-						$scope.out = data.data;
+						$scope.outcode = data.data.code;
 					});
 			}
 			else {
 				srvInfo.decode(
 					function(data) {
-						$scope.out = data.data;
+						$scope.outcode = data.data.text;
 					});
 			}
 			srvInfo.getCompressionRate(

@@ -61,6 +61,8 @@ input[type=submit] {
 	text-align: center;
 	display: block;
 	font-weight: bold;
+	-webkit-transition: .4s;
+	transition: .4s;
 }
   
 input[type=submit]:hover {
@@ -146,6 +148,9 @@ input[type=submit]:hover {
 	-webkit-transition: .4s;
 	transition: .4s;
   }
+.slider:hover {
+	background-color: #009097;
+}
   
   .slider:before {
 	position: absolute;
@@ -214,3 +219,19 @@ input:checked + .slider .off
 
 .slider.round:before {
   border-radius: 50%;}
+
+
+.button-table {
+	border: none;
+	background-color: inherit;
+	padding: 14px 28px;
+	font-size: 16px;
+	cursor: pointer;
+	display: inline-block;
+	color: #393e46;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+.button-table:hover {
+	background-color: #dddddd;
+}

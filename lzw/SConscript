@@ -2,7 +2,7 @@
 
 import os, platform, shutil
 
-Import('env', 'python_version', 'test_val')
+Import('env', 'python_version', 'test_opt')
 
 def copyLibBuilder( target, source, env):
     '''copies library'''
@@ -20,7 +20,10 @@ if(platform.system() == "Linux"):
     env.Append( CPPFLAGS = '-Wall -std=c++11 -pedantic -pthread' )
     env.Append( LINKFLAGS = '-Wall -pthread' )
     if float(python_version) >= 3:
-        env.Append( LIBS = [ 'boost_python3' ] )
+        if float(python_version) == 3.8:
+            env.Append( LIBS = [ 'boost_python38' ] )
+        else:
+            env.Append( LIBS = [ 'boost_python3' ] )
     else:
         env.Append( LIBS = [ 'boost_python' ] )
 elif(platform.system() == "Windows"):
@@ -42,12 +45,12 @@ elif(platform.system() == "Windows"):
     target = '../build_web/lzwpy/lzw.pyd'
 env.Command(target, cpplib, copyLibBuilder )
 
-#build tests
+# build tests
 SConscript('tests/SConscript', variant_dir='build', duplicate=0, exports=['env'])
 
 # run tests
-if int(test_val):
+if test_opt is not None:
     print('scons: Running unit tests ...')
-    os.system('./build/test')
+    os.system('./build/tests')
     print('scons: done running tests.')
     
