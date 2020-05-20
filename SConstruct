@@ -24,10 +24,10 @@ test_opt = GetOption('test')
 python_version = ARGUMENTS.get('python')
 
 if python_version is None:
-    with open('.sconsvars.pickle', 'r') as f:
+    with open('.sconsvars.pickle', 'rb') as f:
         python_version = pickle.load(f)
 else:
-    with open('.sconsvars.pickle', 'w') as f:
+    with open('.sconsvars.pickle', 'wb') as f:
         pickle.dump(python_version, f)
     
 supported_python_versions = ['2.6', '2.7', '3.6', '3.7', '3.8']
