@@ -30,6 +30,14 @@ Domyślna wersja Pythona przy takiej instalacji to 3.x, jednak możliwe jest wyb
 ```
 ./install.sh python=2.6
 ```
+Można też zainstalować wymagane pakiety ręcznie, korzystając z poniższych kroków:
+1. `sudo apt update && sudo apt upgrade`
+2. `sudo apt install g++ scons nodejs npm libboost-dev libboost-all-dev`
+3. a) for Python3 `sudo apt install python3-dev python3-pip` and `sudo pip3 install -r pip_requirements.txt`
+3. b) for Python2 `sudo apt install python-dev python-pip` and `sudo pip install -r pip_requirements.txt`
+4. `cd client`
+5. `npm install`
+
 ### Na Windowsie
 1. Zainstaluj Microsoft Visual Studio.
 2. Zainstaluj preferowanego [Pythona](https://www.python.org/download/releases/) (np. Python3.6) w domyślnej ścieżce (C:\Python36\), następnie dodaj ją do zmiennej środowiskowej PATH.

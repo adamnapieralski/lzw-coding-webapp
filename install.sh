@@ -25,6 +25,3 @@ fi
 
 cd client
 npm install
-
-
-
