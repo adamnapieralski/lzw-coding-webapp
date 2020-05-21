@@ -33,10 +33,10 @@ Default version of python for which some packages are installed is 3.x, however,
 You can also manually install all prerequisites following the steps:
 1. `sudo apt update && sudo apt upgrade`
 2. `sudo apt install g++ scons nodejs npm libboost-dev libboost-all-dev`
-3. a) for Python3 `sudo apt install python3-dev python3-pip` and `sudo pip3 install -r pip_requirements.txt`
-3. b) for Python2 `sudo apt install python-dev python-pip` and `sudo pip install -r pip_requirements.txt`
-4. `cd client`
-5. `npm install`
+3. (for Python3) `sudo apt install python3-dev python3-pip` and `sudo pip3 install -r pip_requirements.txt`
+4. (for Python2) `sudo apt install python-dev python-pip` and `sudo pip install -r pip_requirements.txt`
+5. `cd client`
+6. `npm install`
 
 ### On Windows
 1. Install Microsoft Visual Studio.
