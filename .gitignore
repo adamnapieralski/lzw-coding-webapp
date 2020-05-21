@@ -1,3 +1,10 @@
+.vscode/
+build_web/
+client/node_modules/
+.sconsign.dblite
+lzw/build/
+*.os
+
 # Prerequisites
 *.d
 

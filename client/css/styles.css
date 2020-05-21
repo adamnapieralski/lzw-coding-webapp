@@ -1,0 +1,237 @@
+body {
+	background-color: #393e46;
+}
+
+input[type=text] {
+	width: 100%;
+	padding: 12px;
+	margin: 0px;
+	display: inline-block;
+	border: 1px solid #393e46;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+textarea {
+	width: 100%;
+	padding: 12px;
+	margin: 0px;
+	display: inline-block;
+	border: 1px solid #393e46;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: none;
+}
+
+select {
+	padding: 4px;
+	margin: 0px;
+	display: inline-block;
+	background-color: white;
+	border: 1px solid #393e46;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: none;
+}
+
+div {
+	border-radius: 5px;
+	background-color: #eeeeee;
+	padding: 15px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.vertical-center {
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+input[type=submit] {
+	width: 25%;
+	background-color: #00adb5;
+	color: white;
+	padding: 14px 20px;
+	margin: 0 auto;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	text-align: center;
+	display: block;
+	font-weight: bold;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+  
+input[type=submit]:hover {
+	background-color: #009097;
+}
+
+.compressionrate {
+	color: #009097;
+	font-family: sans-serif;
+	font-size: 1.4em;
+	font-weight: bold;
+	position: relative;
+	display: inline-block;
+	border-radius: 5px;
+}
+
+.bitsizetext {
+	color: #009097;
+	font-family: sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	position: relative;
+	display: inline-block;
+	border-radius: 5px;
+}
+
+/* Tooltip text */
+.compressionrate .tooltiptext {
+	visibility: hidden;
+	width: 80px ;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	font-size: 0.5em;
+	top: 10px;
+	left: 105%;
+   
+	/* Position the tooltip text - see examples below! */
+	position: absolute;
+	z-index: 1;
+  }
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+.compressionrate:hover .tooltiptext {
+	visibility: visible;
+  }
+
+.compressionrate .tooltiptext::after {
+	content: " ";
+	position: absolute;
+	top: 50%;
+	right: 100%; /* To the left of the tooltip */
+	margin-top: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent black transparent transparent;
+  }
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 150px;
+	height: 34px;
+	margin: 0 auto;
+  }
+  
+  .switch input { 
+	opacity: 0;
+	width: 0;
+	height: 0;
+  }
+  
+  .slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #00adb5;
+	-webkit-transition: .4s;
+	transition: .4s;
+  }
+.slider:hover {
+	background-color: #009097;
+}
+  
+  .slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+  }
+  
+  input:checked + .slider {
+	background-color: #00adb5;
+  }
+  
+  input:focus + .slider {
+	box-shadow: 0 0 1px #00adb5;
+  }
+  
+  input:checked + .slider:before {
+	-webkit-transform: translateX(116px);
+	-ms-transform: translateX(116px);
+	transform: translateX(116px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+	border-radius: 34px;
+  }
+  
+  .slider.round:before {
+	border-radius: 50%;
+  }
+
+  .on
+{
+  display: none;
+}
+
+.on, .off
+{
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  font-size: 10px;
+  font-family: Verdana, sans-serif;
+  font-weight: bold;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked + .slider .off
+{display: none;}
+
+/*--------- END --------*/
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;}
+
+
+.button-table {
+	border: none;
+	background-color: inherit;
+	padding: 14px 28px;
+	font-size: 16px;
+	cursor: pointer;
+	display: inline-block;
+	color: #393e46;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+.button-table:hover {
+	background-color: #dddddd;
+}

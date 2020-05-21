@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html ng-app="LZW">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>LZW</title>
+
+		<link rel="stylesheet" href="{% static "css/styles.css" %}" />
+		<script src="{% static "node_modules/angular/angular.min.js" %}"></script>
+		<script type="text/javascript" src="{% static "js/lzw_modules.js" %}" data-cover></script>
+
+		<link rel="icon" href="{% static "media/icon.ico" %}" type="image/x-icon" />
+		<link rel="shortcut icon" href="{% static "media/icon.ico" %}" type="image/x-icon" />
+
+	</head>
+    <body>
+    <div ng-controller="codeController">
+		<div style="width: 100%; display: table;">
+			<div style="display: table-row;">
+				<div id="inCode" style="width: 44%; display: table-cell;">
+					<textarea id="incode" placeholder="Text to encode..."
+					style="height: 100px;"></textarea>
+				</div>
+				<div style="display: table-cell; vertical-align: middle; text-align: center;">
+					<div class="compressionrate">CR: <span ng-bind="compressionRate"></span>
+						<span class="tooltiptext">Compression Rate</span>
+					</div>
+				</div>
+				<div id="outCode" style="width: 44%; display: table-cell;">
+					<textarea id="outcode" placeholder="Code..."
+					style="height: 100px;" data-role="none" ng-model="outcode"></textarea>
+				</div>
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<span class="bitsizetext">Code bit size:</span>
+			<select style="width: 50px; text-align: center;" id="bitSizeSelect" ng-init="bitSize = bitSizes[3]"
+			ng-options="size as size.name for size in bitSizes " ng-model="bitSize" ng-change="chageBitSize()">
+			  </select>
+		</div>
+		<div style="text-align: center;">
+			<label class="switch">
+				<input id="codingCheckBox" type="checkbox" ng-click="changeCodingType()">
+				<div class="slider round">
+				<span class="on">DECODING</span><span class="off">CODING</span>
+				</div>
+			</label>
+		</div>
+		<div>
+			<input type="submit" ng-click="run()" value="RUN">
+		</div>
+		<!-- <div style="text-align: center;">
+			<button class="button-table">Show table</button>
+		</div>
+		<div id="divCheckbox" style="display: none;">Table output</div> -->
+	</div>
+	<br>
+    </body>
+</html>
