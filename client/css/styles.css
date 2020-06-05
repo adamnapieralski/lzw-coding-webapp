@@ -102,12 +102,10 @@ input[type=submit]:hover {
 	top: 10px;
 	left: 105%;
    
-	/* Position the tooltip text - see examples below! */
 	position: absolute;
 	z-index: 1;
   }
 
-  /* Show the tooltip text when you mouse over the tooltip container */
 .compressionrate:hover .tooltiptext {
 	visibility: visible;
   }
@@ -116,7 +114,7 @@ input[type=submit]:hover {
 	content: " ";
 	position: absolute;
 	top: 50%;
-	right: 100%; /* To the left of the tooltip */
+	right: 100%;
 	margin-top: -5px;
 	border-width: 5px;
 	border-style: solid;
@@ -210,9 +208,6 @@ input:checked+ .slider .on
 input:checked + .slider .off
 {display: none;}
 
-/*--------- END --------*/
-
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }

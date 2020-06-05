@@ -13,27 +13,29 @@
 #include <sstream>
 #include <algorithm>
 
-LZW& LZW::getInstance() {
-    static LZW instance;
-    return instance;
-}
+LZW::LZW() :
+    bitSize_(DEFAULT_BIT_SIZE),
+    maxTableSize_(static_cast<int>(std::pow(2., bitSize_) - 1)),
+    compressionRate_(0.) {}
 
-LZW::LZW() {
-    bitSize_ = 12;
-    setMaxTableSize();
-    compressionRate_ = 0.;
-}
+LZW::LZW(int bitSize) :
+    bitSize_(bitSize),
+    maxTableSize_(static_cast<int>(std::pow(2., bitSize_) - 1)),
+    compressionRate_(0.) {}
+
 
 std::vector<uint16_t> LZW::encode(const std::string& str) {
     resetEncodeTable();
     std::vector<uint16_t> out;
-    std::string p = "", c = "";
     if (str.empty()) {
         compressionRate_ = 0.;
         return out;
     }
+    std::string p = "";
     p += str.at(0);
+    std::string c = "";
     int count = UCHAR_MAX + 1;
+
     for (size_t i = 0; i < str.length(); ++i) {
         if (encodeTable_.size() >= maxTableSize_) {
             resetEncodeTable();
@@ -72,12 +74,11 @@ std::string LZW::decode(const std::vector<uint16_t>& code) {
         return out;
     }
     int old = code.at(0);
-    int codeNum;
     std::string s = decodeTable_[old];
     std::string c = s;
     out += s;
     int count = UCHAR_MAX + 1;
-
+    int codeNum = 0;
     for (size_t i = 0; i < code.size() - 1; ++i) {
         codeNum = code.at(i + 1);
         if (decodeTable_.size() >= maxTableSize_) {
@@ -107,18 +108,16 @@ std::string LZW::decodeFromString(const std::string& code) {
     return decode(codeVec);
 }
 
-void LZW::setBitSize(int bitSize) {
-    bitSize_ = bitSize;
-    setMaxTableSize();
+int LZW::getBitSize() const {
+    return bitSize_;
 }
-
 
 double LZW::getCompressionRate() const {
     return compressionRate_;
 }
 
-
-void LZW::initializeEncodeTable() {
+void LZW::resetEncodeTable() {
+    encodeTable_.clear();
     for (int i = 0; i < UCHAR_MAX; ++i) {
         std::string ch = "";
         ch += char(i);
@@ -126,26 +125,13 @@ void LZW::initializeEncodeTable() {
     }
 }
 
-void LZW::initializeDecodeTable() {
+void LZW::resetDecodeTable() {
+    decodeTable_.clear();
     for (int i = 0; i < UCHAR_MAX; ++i) {
         std::string ch = "";
         ch += char(i);
         decodeTable_[i] = ch;
     }
-}
-
-void LZW::resetEncodeTable() {
-    encodeTable_.clear();
-    initializeEncodeTable();
-}
-
-void LZW::resetDecodeTable() {
-    decodeTable_.clear();
-    initializeDecodeTable();
-}
-
-void LZW::setMaxTableSize() {
-    maxTableSize_ = static_cast<int>(std::pow(2., bitSize_) - 1);
 }
 
 void LZW::calculateCompressionRate(const std::string& text, const std::vector<uint16_t>& code) {

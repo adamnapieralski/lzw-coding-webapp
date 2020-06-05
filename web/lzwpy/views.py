@@ -1,6 +1,6 @@
 from lzwpy import lzw
 
-lzw_obj = lzw.LZW.getInstance()
+lzw_obj = lzw.LZW()
     
 def encode(params):
     text = str(params['text'])
@@ -15,8 +15,9 @@ def decode(params):
     }
 
 def changeBitSize(params):
+    global lzw_obj
     bitSize = int(params['bitSize'])
-    lzw_obj.setBitSize(bitSize)
+    lzw_obj = lzw.LZW(bitSize)
 
 def getCompressionRate(params):
     return {
