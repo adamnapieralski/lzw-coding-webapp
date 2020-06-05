@@ -14,12 +14,10 @@ using namespace boost::python;
 
 BOOST_PYTHON_MODULE(lzw)
 {
-    class_<LZW, boost::noncopyable>("LZW", no_init)
-        .def("getInstance", &LZW::getInstance, return_value_policy<reference_existing_object>())
-            .staticmethod("getInstance")
+    class_<LZW>("LZW")
+        .def(init<int>())
         .def("encodeToString", &LZW::encodeToString)
         .def("decodeFromString", &LZW::decodeFromString)
         .def("getCompressionRate", &LZW::getCompressionRate)
-        .def("setBitSize", &LZW::setBitSize)
     ;
 }

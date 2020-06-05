@@ -52,9 +52,7 @@ myAppControllers.controller('codeController',
 
 		};
 }]);
-	
 
-// communication with the server
 angular.module('myAppServices', [])
     .service('srvInfo',
              function($http) {
