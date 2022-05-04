@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/adamnapieralski/lzw-text-compression-webapp#readme",
   "dependencies": {
-    "angular": "^1.7.9"
+    "angular": "^1.8.3"
   }
 }
